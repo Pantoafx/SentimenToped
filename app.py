@@ -30,5 +30,3 @@ if st.button('Analisis'):
         st.write(f'Sentimen: {sentiment_label}')
     else:
         st.write('Teks tidak boleh kosong')
-
-if __name__ == '__main__':
