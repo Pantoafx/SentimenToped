@@ -37,7 +37,7 @@ def main():
             text_clean = preprocess_text(user_input)
 
             # Transformasi teks dengan model dan prediksi sentimen
-            text_vector = modelsvc_loaded['vectorizer'].transform([text_clean])
+            text_vector = modelsvc_loaded.named_steps['vectorizer'].transform([text_clean])
             prediction = modelsvc_loaded['classifier'].predict(text_vector)
 
             # Tentukan label sentimen
