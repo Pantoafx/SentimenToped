@@ -16,6 +16,15 @@ def preprocess_text(text):
     text = stemmer.stem(text)  # Stemming
     return text
 
+# Tentukan warna berdasarkan sentimen
+def get_sentiment_color(sentimen):
+    if sentimen == 'positif':
+        return 'green'
+    elif sentimen == 'negatif':
+        return 'red'
+    else:
+        return 'black'  # Default jika sentimen tidak diketahui
+
 # Halaman Utama
 def main():
     uhm = 'logo.png'
@@ -49,6 +58,9 @@ def main():
             st.write(f'Sentimen : {sentiment_label} {emoji}')
         else:
             st.warning('Masukkan teks untuk menganalisis.')
+            # Menentukan warna berdasarkan sentimen
+            color = get_sentiment_color(sentiment_label)
 
-if __name__ == '__main__':
+            # Tampilkan teks sentimen dengan warna dan ukuran yang sesuai
+            st.markdown(f'<p style="color:{color}; font-size:24px;">Sentimen: {sentiment_label}</p>', unsafe_allow_html=True)if __name__ == '__main__':
     main()
