@@ -5,7 +5,7 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from sklearn.exceptions import NotFittedError
 
 # Muat model dari file .pkl
-with open('model_svm.pkl', 'rb') as model_file:
+with open('svm_model.pkl', 'rb') as model_file:
     modelsvc_loaded = pickle.load(model_file)
 
 # Halaman Utama
