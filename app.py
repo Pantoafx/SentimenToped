@@ -38,7 +38,7 @@ def main():
 
             # Transformasi teks dengan model dan prediksi sentimen
             text_vector = modelsvc_loaded.named_steps['vectorizer'].transform([text_clean])
-            prediction = modelsvc_loaded['classifier'].predict(text_vector)
+            prediction = modelsvc_loaded.named_steps['classifier'].predict(text_vector)
 
             # Tentukan label sentimen
             sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
