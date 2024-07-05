@@ -4,7 +4,7 @@ import re
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
 # Muat model dari file .pkl
-with open('svm_model.pkl', 'rb') as model_file:
+with open('msvmstrem.pkl', 'rb') as model_file:
     modelsvc_loaded = pickle.load(model_file)
 
 # Fungsi pra-pemrosesan
