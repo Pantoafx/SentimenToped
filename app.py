@@ -55,13 +55,9 @@ def main():
             # Menambahkan emoji berdasarkan sentimen
             emoji = ':smiley:' if sentiment_label == 'positif' else ':persevere:'
 
-            # Menentukan warna berdasarkan sentimen
-            color = get_sentiment_color(sentiment_label)
-            #Tampilkan teks sentimen dengan warna dan ukuran yang sesu
             st.write(f'Sentimen : {sentiment_label} {emoji}')
         else:
             st.warning('Masukkan teks untuk menganalisis.')
 
-            # Tampilkan teks sentimen dengan warna dan ukuran yang sesuai
-            if __name__ == '__main__':
-               main()
+if __name__ == '__main__':
+    main()
