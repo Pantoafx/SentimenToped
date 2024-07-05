@@ -26,4 +26,10 @@ if st.button('Analisis'):
         text_clean = preprocess_text(text_input)
         text_vector = modelsvc_loaded.named_steps['vectorizer'].transform([text_clean])
         prediction = modelsvc_loaded.named_steps['classifier'].predict(text_vector)
-        sentiment_label = 'positif' if prediction[0
+        sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
+        st.write(f'Sentimen: {sentiment_label}')
+    else:
+        st.write('Teks tidak boleh kosong')
+
+if __name__ == '__main__':
+    st.run()
