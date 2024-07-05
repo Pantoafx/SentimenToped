@@ -1,4 +1,4 @@
-scikit-learn==1.2.2
+scikit-learn==1.5.0
 Sastrawi==1.0.1
 numpy==1.23.0
 streamlit
