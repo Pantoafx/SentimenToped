@@ -32,4 +32,3 @@ if st.button('Analisis'):
         st.write('Teks tidak boleh kosong')
 
 if __name__ == '__main__':
-    st.run()
