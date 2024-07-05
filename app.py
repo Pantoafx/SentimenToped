@@ -57,13 +57,10 @@ def main():
 
             # Menentukan warna berdasarkan sentimen
             color = get_sentiment_color(sentiment_label)
-            #Tampilkan teks sentimen dengan warna dan ukuran yang sesuai
-            st.markdown(f'<p style="color:{color}; font-size:24px;">Sentimen: {sentiment_label}</p>', unsafe_allow_html=True)
+            #Tampilkan teks sentimen dengan warna dan ukuran yang sesu
             st.write(f'Sentimen : {sentiment_label} {emoji}')
         else:
             st.warning('Masukkan teks untuk menganalisis.')
-            # Menentukan warna berdasarkan sentimen
-            color = get_sentiment_color(sentiment_label)
 
             # Tampilkan teks sentimen dengan warna dan ukuran yang sesuai
             if __name__ == '__main__':
