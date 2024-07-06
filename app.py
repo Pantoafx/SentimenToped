@@ -75,7 +75,9 @@ def main():
                 # Determine color based on sentiment
                 color = 'green' if sentiment_label == 'positif' else 'red'
 
-                # Display results in three columns
+                # Display results in three columns with spacing
+                st.markdown("<h3>Hasil Analisis:</h3>")
+                st.markdown("<br>", unsafe_allow_html=True)
                 col1, col2, col3 = st.columns(3)
                 col1.image(image, caption=sentiment_label)
                 col2.metric("Perkiraan Rating", rating, None)
