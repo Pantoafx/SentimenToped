@@ -37,7 +37,7 @@ def main():
     st.markdown("<h1 style='text-align: center; color: #ff6347;'>Analisis Sentimen Ulasan Tokopedia</h1>", unsafe_allow_html=True)
 
     # Input text from user
-    user_input = st.text_area('Paste Ulasan Tokopedia disini...')
+    user_input = = st.text_input('User Input', placeholder='Input text'
 
     # Button for sentiment analysis
     if st.button('Analisis Sentimen'):
