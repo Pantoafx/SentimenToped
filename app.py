@@ -75,16 +75,12 @@ def main():
                 # Determine color based on sentiment
                 color = 'green' if sentiment_label == 'positif' else 'red'
 
-                # Display sentiment result with color and larger text
-                st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label}</p>", unsafe_allow_html=True)
-                
-                # Display image
-                st.image(image, caption=sentiment_label)
-
-                # Display language and estimated rating
-                col1, col2 = st.columns(2)
-                col1.metric("Perkiraan Rating", rating, None)
-                col2.metric("Bahasa", "Indonesia", None)
+                # Display results in three columns
+                col1, col2, col3 = st.columns(3)
+                col1.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label}</p>", unsafe_allow_html=True)
+                col1.image(image, caption=sentiment_label)
+                col2.metric("Perkiraan Rating", rating, None)
+                col3.metric("Bahasa", "Indonesia", None)
             else:
                 st.warning('Mohon masukkan teks dalam Bahasa Indonesia.')
         else:
