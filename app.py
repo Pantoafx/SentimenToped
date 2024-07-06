@@ -23,14 +23,11 @@ def detect_language(text):
     lang, _ = langid.classify(text)
     return lang
 
-# Determine color based on sentiment
-def get_sentiment_color(sentimen):
-    if sentimen == 'positif':
-        return 'green'
-    elif sentimen == 'negatif':
-        return 'red'
-    else:
-        return 'black'  # Default if sentiment is unknown
+# Function to predict rating
+def predict_rating(proba):
+    # Convert probability to a rating scale of 1 to 5
+    rating = round(proba * 5, 2)
+    return rating
 
 # Main page function
 def main():
@@ -58,10 +55,16 @@ def main():
 
                 # Transform text with the model and predict sentiment
                 text_vector = modelsvc_loaded['vectorizer'].transform([text_clean])
-                prediction = modelsvc_loaded['classifier'].predict(text_vector)
+                prediction_proba = modelsvc_loaded['classifier'].predict_proba(text_vector)
+                
+                # Get the probability of the positive class
+                proba_positif = prediction_proba[0][1]
+                
+                # Predict rating
+                rating = predict_rating(proba_positif)
 
                 # Determine sentiment label
-                sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
+                sentiment_label = 'positif' if proba_positif >= 0.5 else 'negatif'
 
                 # Load corresponding image
                 if sentiment_label == 'positif':
@@ -70,7 +73,7 @@ def main():
                     image = Image.open('./images/negative.PNG')
 
                 # Determine color based on sentiment
-                color = get_sentiment_color(sentiment_label)
+                color = 'green' if sentiment_label == 'positif' else 'red'
 
                 # Display sentiment result with color and larger text
                 st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label}</p>", unsafe_allow_html=True)
@@ -78,9 +81,9 @@ def main():
                 # Display image
                 st.image(image, caption=sentiment_label)
 
-                # Display language and dummy rating (since we don't calculate actual rating here)
+                # Display language and estimated rating
                 col1, col2 = st.columns(2)
-                col1.metric("Perkiraan Rating", "N/A", None)
+                col1.metric("Perkiraan Rating", rating, None)
                 col2.metric("Bahasa", "Indonesia", None)
             else:
                 st.warning('Mohon masukkan teks dalam Bahasa Indonesia.')
