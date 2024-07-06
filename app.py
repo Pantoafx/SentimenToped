@@ -31,11 +31,11 @@ def predict_rating(proba):
 
 # Main page function
 def main():
-    uhm = '/mnt/data/image.png'
-    uhm1 = '/mnt/data/image.png'
+    uhm = 'logo.png'
+    uhm1 = 'logo.png'
     sidebar_logo = uhm 
     main_body_logo = uhm1
-    st.image(sidebar_logo)
+    st.logo(sidebar_logo, icon_image=main_body_logo)
     st.sidebar.markdown('https://handayani.ac.id')
 
     st.markdown("<h1 style='text-align: center; color: #ff6347;'>Analisis Sentimen Ulasan Tokopedia</h1>", unsafe_allow_html=True)
@@ -77,11 +77,12 @@ def main():
                 color = 'green' if sentiment_label == 'positif' else 'red'
 
                 # Display results in three columns with spacing
-                st.markdown("<h3 style='text-align: center;'>Hasil Analisis:</h3>")
+                st.markdown("<h3>Hasil Analisis:</h3>")
                 st.markdown("<br>", unsafe_allow_html=True)
-                col1, col2, col3 = st.columns([1, 1, 1])
+                col1, col2, col3 = st.columns(3)
+                col1.markdown("<br>", unsafe_allow_html=True)  # Add spacing before the image
                 col1.image(image)
-                col1.markdown(f"<p style='text-align: center; color: {color};'>{sentiment_label.capitalize()}</p>", unsafe_allow_html=True)
+                col1.markdown(f"<p style='text-align: center; color: {color}; margin-top: -10px;'>{sentiment_label.capitalize()}</p>", unsafe_allow_html=True)
                 col2.metric("Perkiraan Rating", rating, None)
                 col3.metric("Bahasa", "Indonesia", None)
             else:
