@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import re
+import langid
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
 # Load model from .pkl file
@@ -15,6 +16,11 @@ def preprocess_text(text):
     stemmer = StemmerFactory().create_stemmer()  # Initialize stemmer
     text = stemmer.stem(text)  # Stemming
     return text
+
+# Function to detect language
+def detect_language(text):
+    lang, _ = langid.classify(text)
+    return lang
 
 # Determine color based on sentiment
 def get_sentiment_color(sentimen):
@@ -42,24 +48,30 @@ def main():
     # Button for sentiment analysis
     if st.button('Analysis'):
         if userText:
-            # Preprocess the text
-            text_clean = preprocess_text(userText)
+            # Detect language
+            lang = detect_language(userText)
+            
+            if lang == 'id':
+                # Preprocess the text
+                text_clean = preprocess_text(userText)
 
-            # Transform text with the model and predict sentiment
-            text_vector = modelsvc_loaded['vectorizer'].transform([text_clean])
-            prediction = modelsvc_loaded['classifier'].predict(text_vector)
+                # Transform text with the model and predict sentiment
+                text_vector = modelsvc_loaded['vectorizer'].transform([text_clean])
+                prediction = modelsvc_loaded['classifier'].predict(text_vector)
 
-            # Determine sentiment label
-            sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
+                # Determine sentiment label
+                sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
 
-            # Determine emoji based on sentiment
-            emoji = '😃' if sentiment_label == 'positif' else '😟'
+                # Determine emoji based on sentiment
+                emoji = '😃' if sentiment_label == 'positif' else '😟'
 
-            # Determine color based on sentiment
-            color = get_sentiment_color(sentiment_label)
+                # Determine color based on sentiment
+                color = get_sentiment_color(sentiment_label)
 
-            # Display sentiment result with color, larger text, and emoji
-            st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label} {emoji}</p>", unsafe_allow_html=True)
+                # Display sentiment result with color, larger text, and emoji
+                st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label} {emoji}</p>", unsafe_allow_html=True)
+            else:
+                st.warning('Mohon masukkan teks dalam Bahasa Indonesia.')
         else:
             st.warning('Masukkan teks untuk menganalisis.')
 
