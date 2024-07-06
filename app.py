@@ -80,6 +80,7 @@ def main():
                 col1, col2, col3 = st.columns(3)
                 #col1.markdown("<br>", unsafe_allow_html=True)  # Add spacing before the image
                 #col1.image("Sentimen", image, caption=sentiment_label)
+                col1.image(image, caption="Sentimen")
                 col1.image(image, caption=f"Sentimen: {sentiment_label}")
                 col2.metric("Perkiraan Rating", rating, None)
                 col3.metric("Bahasa", "Indonesia", None)
