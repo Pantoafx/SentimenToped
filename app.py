@@ -68,9 +68,9 @@ def main():
 
                 # Load corresponding image
                 if sentiment_label == 'positif':
-                    image = Image.open('./images/positive.PNG')
+                    image = Image.open('./images/positive.png')
                 else:
-                    image = Image.open('./images/negative.PNG')
+                    image = Image.open('./images/negative.png')
 
                 # Determine color based on sentiment
                 color = 'green' if sentiment_label == 'positif' else 'red'
