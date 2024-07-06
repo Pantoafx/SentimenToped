@@ -41,7 +41,7 @@ def main():
     
     # Button for sentiment analysis
     if st.button('Analysis'):
-        if user_input:
+        if userText:
             # Preprocess the text
             text_clean = preprocess_text(user_input)
 
