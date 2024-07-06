@@ -77,7 +77,6 @@ def main():
 
                 # Display results in three columns
                 col1, col2, col3 = st.columns(3)
-                col1.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label}</p>", unsafe_allow_html=True)
                 col1.image(image, caption=sentiment_label)
                 col2.metric("Perkiraan Rating", rating, None)
                 col3.metric("Bahasa", "Indonesia", None)
