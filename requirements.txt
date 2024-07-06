@@ -4,3 +4,4 @@ streamlit
 pandas==2.2.2
 numpy==1.26.4
 pip==24.0
+langid==1.1.6
