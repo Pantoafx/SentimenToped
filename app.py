@@ -43,7 +43,7 @@ def main():
     if st.button('Analysis'):
         if userText:
             # Preprocess the text
-            text_clean = preprocess_text(user_input)
+            text_clean = preprocess_text(userText)
 
             # Transform text with the model and predict sentiment
             text_vector = modelsvc_loaded['vectorizer'].transform([text_clean])
