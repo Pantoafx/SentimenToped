@@ -40,7 +40,7 @@ def main():
     userText = st.text_input('Halo', placeholder='Paste Ulasan Disini..')
     
     # Button for sentiment analysis
-    if st.button('Analisis Sentimen'):
+    if st.button('Analysis'):
         if user_input:
             # Preprocess the text
             text_clean = preprocess_text(user_input)
