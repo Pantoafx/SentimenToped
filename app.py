@@ -77,7 +77,7 @@ def main():
                 color = 'green' if sentiment_label == 'positif' else 'red'
 
                 # Display results in three columns with spacing
-               st.components.v1.html("""
+                st.components.v1.html("""
                                 <h3 style="color: #0284c7; font-family: Source Sans Pro, sans-serif; font-size: 28px; margin-bottom: 10px; margin-top: 50px;">Result</h3>
                                 """, height=100)
                 st.markdown("<br>", unsafe_allow_html=True)
