@@ -82,7 +82,7 @@ def main():
                 col1, col2, col3 = st.columns(3)
                 col1.markdown("<br>", unsafe_allow_html=True)  # Add spacing before the image
                 col1.image(image)
-                col1.markdown(f"<p style='text-align: right; color: {color}; margin-top: 10px; margin-left: -30px, margin-right: 50px;;'>{sentiment_label.capitalize()}</p>", unsafe_allow_html=True)
+                col1.markdown(f"<p style='text-align: left; color: {color}; margin-top: 10px; margin-left: -30px, margin-right: 50px;;'>{sentiment_label.capitalize()}</p>", unsafe_allow_html=True)
                 col2.metric("Perkiraan Rating", rating, None)
                 col3.metric("Bahasa", "Indonesia", None)
             else:
