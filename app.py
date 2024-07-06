@@ -77,7 +77,7 @@ def main():
 
                 # Display results in three columns with spacing
                 st.components.v1.html("""
-                                <h3 style="color: #0284c7; font-family: Source Sans Pro, sans-serif; font-size: 28px; margin-bottom: 10px; margin-top: 50px;">Hasil Analisa</h3>
+                                <h3 style="color: #0284c7; font-family: Source Sans Pro, sans-serif; font-size: 28px; margin-bottom: 10px; margin-top: 50px;">Hasil Analis :</h3>
                                 """, height=100)
                 st.markdown("<br>", unsafe_allow_html=True)
                 col1, col2, col3 = st.columns(3)
