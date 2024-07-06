@@ -3,6 +3,7 @@ import pickle
 import re
 import langid
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+from PIL import Image
 
 # Load model from .pkl file
 with open('msvmstrem.pkl', 'rb') as model_file:
@@ -62,14 +63,25 @@ def main():
                 # Determine sentiment label
                 sentiment_label = 'positif' if prediction[0] == 'positif' else 'negatif'
 
-                # Determine emoji based on sentiment
-                emoji = '😃' if sentiment_label == 'positif' else '😟'
+                # Load corresponding image
+                if sentiment_label == 'positif':
+                    image = Image.open('./images/positive.PNG')
+                else:
+                    image = Image.open('./images/negative.PNG')
 
                 # Determine color based on sentiment
                 color = get_sentiment_color(sentiment_label)
 
-                # Display sentiment result with color, larger text, and emoji
-                st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label} {emoji}</p>", unsafe_allow_html=True)
+                # Display sentiment result with color and larger text
+                st.markdown(f"<p style='font-size: 32px; color: {color};'>Sentimen : {sentiment_label}</p>", unsafe_allow_html=True)
+                
+                # Display image
+                st.image(image, caption=sentiment_label)
+
+                # Display language and dummy rating (since we don't calculate actual rating here)
+                col1, col2 = st.columns(2)
+                col1.metric("Perkiraan Rating", "N/A", None)
+                col2.metric("Bahasa", "Indonesia", None)
             else:
                 st.warning('Mohon masukkan teks dalam Bahasa Indonesia.')
         else:
