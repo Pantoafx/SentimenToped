@@ -38,7 +38,7 @@ def main():
     st.logo(sidebar_logo, icon_image=main_body_logo)
     st.sidebar.markdown('https://handayani.ac.id')
 
-    st.markdown("<h1 style='text-align: center; color: #ff6347;'>Analisis Sentimen Ulasan Tokopedia</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #50C878;'>Analisis Sentimen Ulasan Tokopedia</h1>", unsafe_allow_html=True)
 
     # Input text from user
     userText = st.text_input('Halo', placeholder='Paste Ulasan Disini..')
