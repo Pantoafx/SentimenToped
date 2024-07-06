@@ -73,15 +73,12 @@ def main():
                     image = Image.open('./images/negative.png')
                 image = image.resize((int(image.width / 2), int(image.height / 2)))
 
-                # Determine color based on sentiment
-                color = 'green' if sentiment_label == 'positif' else 'red'
-
                 # Display results in three columns with spacing
                 st.components.v1.html("""
-                                <h3 style="color: #0284c7; font-family: Source Sans Pro, sans-serif; font-size: 28px; margin-bottom: 10px; margin-top: 50px;">Result</h3>
+                                <h3 style="color: #0284c7; font-family: Source Sans Pro, sans-serif; font-size: 28px; margin-bottom: 10px; margin-top: 50px;">Hasil Analisis :</h3>
                                 """, height=100)
                 col1, col2, col3 = st.columns(3)
-                col1.markdown("<br>", unsafe_allow_html=True)  # Add spacing before the image
+                #col1.markdown("<br>", unsafe_allow_html=True)  # Add spacing before the image
                 col1.image(image, caption=sentiment_label)
                 col2.metric("Perkiraan Rating", rating, None)
                 col3.metric("Bahasa", "Indonesia", None)
